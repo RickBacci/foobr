@@ -102,6 +102,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    materialize-sass (0.97.0)
+      sass (~> 3.3)
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -245,9 +247,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  materialize-sass
   meta_request
   omniauth-google-oauth2
-  pg
+  pg (~> 0.18.2)
   pry
   puma
   rails (= 4.2.3)

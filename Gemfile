@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 
 gem 'rails', '4.2.3'
-gem 'pg'
+gem 'pg', '~> 0.18.2'
 gem 'sass-rails', '~> 5.0'
+gem 'materialize-sass'
 gem 'haml-rails'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
