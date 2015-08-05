@@ -1,5 +1,5 @@
 .row
-  .col.m12
+  .col.m12.white
     - unless current_user
       .card.center-align.greeting
         %a{:href => "/auth/google_oauth2"}
@@ -10,7 +10,7 @@
               %strong Get Help Now!
 .row
   .col.m12
-    %table.bordered.centered.hoverable.z-depth-5
+    %table.bordered.centered.hoverable.z-depth-5.white
       %thead
         %tr
           %th{"data-field" => "id"} Total hours available

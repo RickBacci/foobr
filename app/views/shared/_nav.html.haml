@@ -1,15 +1,21 @@
 %nav.pad-sides
-  .nav-wrapper
-    %a.brand-logo{:href => "/"} FooBr
-    %ul#nav-mobile.right.hide-on-med-and-down
-      %li.pad-right
-        -if current_user
-          Signed in as
-          = succeed "!" do
-            %strong= current_user.name
-      %li
-        - if current_user
-          = link_to "Sign out", signout_path, id: "sign_out"
-        - else
-          = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
+  %a.brand-logo{:href => "/"} FooBr
+  %ul#slide-out.side-nav.flow-text
+    %li
+      %a{:href => "#!"} First Sidebar Link
+    %li
+      %a{:href => "#!"} Second Sidebar Link
+  %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
+    %i.mdi-navigation-menu
+  %ul.right.flow-text
+    %li.pad-right.hide-on-med-and-down
+      -if current_user
+        Signed in as
+        = succeed "!" do
+          %strong= current_user.name
+    %li
+      - if current_user
+        = link_to "Sign out", signout_path, id: "sign_out"
+      - else
+        = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
 
