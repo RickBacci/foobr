@@ -26,6 +26,7 @@ gem 'foreman'
 
 gem 'omniauth-google-oauth2'
 gem 'figaro'
+gem 'autoprefixer-rails', '~> 5.2.1.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
