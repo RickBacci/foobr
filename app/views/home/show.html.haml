@@ -1,0 +1,83 @@
+.row
+  .col.m12
+    - unless current_user
+      .card.center-align.greeting
+        %a{:href => "/auth/google_oauth2"}
+          .card-content
+            %p.grey-text.text-darken-4.flow-text
+              %strong Your Time is Valuable!
+            %p.flow-text
+              %strong Get Help Now!
+.row
+  .col.m12
+    %table.bordered.centered.hoverable.z-depth-5
+      %thead
+        %tr
+          %th{"data-field" => "id"} Total hours available
+          %th{"data-field" => "experience"} Years experience
+          %th{"data-field" => "name"} Dev Name
+          %th{"data-field" => "expertise"} Areas of Expertise
+      %tbody
+        %tr
+          %td 8
+          %td 8
+          %td Suzie
+          %td Ruby Rails
+        %tr
+          %td 8
+          %td 2
+          %td Alan
+          %td Php Word-Press
+        %tr
+          %td 7
+          %td 12
+          %td Jonathan
+          %td Html Css
+        %tr
+          %td 6
+          %td 8
+          %td Suzie
+          %td Ruby Rails
+        %tr
+          %td 6
+          %td 2
+          %td Alan
+          %td Php Word-Press
+        %tr
+          %td 4
+          %td 12
+          %td Jonathan
+          %td Html Css
+        %tr
+          %td 4
+          %td 8
+          %td Suzie
+          %td Ruby Rails
+        %tr
+          %td 2
+          %td 2
+          %td Alan
+          %td Php Word-Press
+        %tr
+          %td 2
+          %td 12
+          %td Jonathan
+          %td Html Css
+        %tr
+          %td 2
+          %td 8
+          %td Suzie
+          %td Ruby Rails
+        %tr
+          %td 1
+          %td 2
+          %td Alan
+          %td Php Word-Press
+        %tr
+          %td 1
+          %td 12
+          %td Jonathan
+          %td Html Css
+
+
+
