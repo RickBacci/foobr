@@ -7,6 +7,10 @@
     = csrf_meta_tags
   %body
     = render 'shared/nav'
+    = flash[:notice]
+    -if current_user
+      - current_user.errors.full_messages.each do |error|
+        %li= error
     = yield
     = render 'shared/footer'
 

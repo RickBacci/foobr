@@ -1,0 +1,19 @@
+.row
+  .col.m8.offset-2
+  -if current_user.role == 'customer'
+    .card.center-panel.center-align.black
+      .card-content.grey-text
+        = form_for current_user do |f|
+          = f.label :company_name
+          = f.text_field :company_name
+          = f.submit "Update My Profile"
+  -else
+    .card.center-panel.center-align.black
+      .card-content.grey-text
+        = form_for current_user do |f|
+          = f.label :company_name
+          = f.text_field :company_name
+          = f.submit "Update My Profile"
+.row
+  .col.m12
+    =link_to "Add Specialties", specialties_path

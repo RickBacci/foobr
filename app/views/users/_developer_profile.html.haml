@@ -1,0 +1,33 @@
+.row
+  .col.m8.offset-m2
+    #h1.center-align
+      Developer Profile
+      = link_to "Edit Profile", edit_user_path(current_user), id: "edit_profile"
+.row
+  .col.m12
+    .card-panel.black.center-panel
+      %ul.white-text
+        %li
+          %span.white-text
+            Name
+            = current_user.name
+        %li
+          %span.white-text
+            Email
+            = current_user.email
+        %li
+          %span.white-text
+            Company Name
+            = current_user.company_name
+        %li
+          %span.white-text
+            Experience
+            = current_user.experience
+        %li
+          %span.white-text
+            Areas of Expertise
+            %ul
+            - current_user.specialties.each do |area|
+              %li
+                = area
+

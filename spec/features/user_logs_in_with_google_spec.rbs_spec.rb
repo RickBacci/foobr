@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.feature "User logs in with Google", type: :feature do
   include OmniAuthUser
 
@@ -15,7 +14,7 @@ RSpec.feature "User logs in with Google", type: :feature do
     VCR.use_cassette("login") do
       visit root_path
 
-      assert_equal 200, page.status_code
+      expect(page.status_code).to eq(200)
 
       click_link "Sign in with Google"
 

@@ -1,31 +1,31 @@
 %nav.pad-sides
-  %a.brand-logo{:href => "/"} FooBr
-  %ul#slide-out.side-nav.flow-text
-    -if current_user
-      %li.pad-right.hide-on-med-and-down
-        = link_to "Profile", user_path(@user), id: "user_show"
-      %li.pad-right.hide-on-med-and-down
-        Signed in as
-        = succeed "!" do
-          %strong= current_user.name
-      %li
-        = link_to "Sign out", signout_path, id: "sign_out"
-    -else
-      %li
-        = link_to "Sign in", "/auth/google_oauth2", id: "sign_in"
-  %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
-    %i.mdi-navigation-menu
-  %ul.right.flow-text
-    -if current_user
-      %li.pad-right.hide-on-med-and-down
-        = link_to "Profile", user_path(@user), id: "user_show"
-      %li.pad-right.hide-on-med-and-down
-        Signed in as
-        = succeed "!" do
-          %strong= current_user.name
-      %li
-        = link_to "Sign out", signout_path, id: "sign_out"
-    -else
-      %li
-        = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
-
+  .nav-wrapper
+    %a.brand-logo{:href => "/"} FooBr
+    %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
+      %i.mdi-navigation-menu
+    %ul#nav.right.flow-text
+      -if current_user
+        %li.pad-right.hide-on-med-and-down
+          = link_to "Profile", user_path(current_user), id: "user_show"
+        %li.pad-right.hide-on-med-and-down
+          Signed in as
+          = succeed "!" do
+            %strong= current_user.name
+        %li
+          = link_to "Sign out", signout_path, id: "sign_out"
+      -else
+        %li
+          = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
+    %ul#slide-out.side-nav.flow-text
+      -if current_user
+        %li.pad-right.hide-on-med-and-up.black
+          Signed in as
+          = succeed "!" do
+            %strong= current_user.name
+        %li.pad-right.hide-on-med-and-up
+          = link_to "Profile", user_path(current_user), id: "user_show"
+        %li.pad-right.hide-on-med-and-up
+          = link_to "Sign out", signout_path, id: "sign_out"
+      -else
+        %li
+          = link_to "Sign in", "/auth/google_oauth2", id: "sign_in"
