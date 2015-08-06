@@ -24,16 +24,23 @@ nav {
   margin-bottom: 30px;
 }
 
-.greeting {
-  width: 75%;
+.greeting-dev {
+  width: 45%;
   position: fixed;
-  left: 50%;
-  bottom: 25%;
+  left: 88%;
+  margin: 0 0 0 -37.5%;
+  height: auto;
+  background-color: #ffcdd2;
+}
+
+.greeting-customer {
+  width: 45%;
+  position: fixed;
+  right: 51%;
   margin: 0 0 0 -37.5%;
   height: auto;
   background-color: #eeeeee;
 }
-
 .pad-sides {
   padding-left: 15px;
   padding-right: 15px;

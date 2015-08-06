@@ -1,13 +1,23 @@
 .row
-  .col.m12.white
-    - unless current_user
-      .card.center-align.greeting
+  - unless current_user
+    .col.m6
+      .card.center-align.greeting-customer
         %a{:href => "/auth/google_oauth2"}
           .card-content
             %p.grey-text.text-darken-4.flow-text
               %strong Your Time is Valuable!
             %p.flow-text
               %strong Get Help Now!
+    .col.m6
+      .card.center-align.greeting-dev
+        %a{:href => "/auth/google_oauth2"}
+          .card-content
+            %p.grey-text.text-darken-4.flow-text
+              %strong Your Time is Valuable!
+            %p.flow-text
+              %strong Help Now!
+            %p.flow-text
+              Sign up as a Developer
 .row
   .col.m12
     %table.bordered.centered.hoverable.z-depth-5.white
