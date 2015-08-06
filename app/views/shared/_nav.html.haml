@@ -1,21 +1,31 @@
 %nav.pad-sides
   %a.brand-logo{:href => "/"} FooBr
   %ul#slide-out.side-nav.flow-text
-    %li
-      %a{:href => "#!"} First Sidebar Link
-    %li
-      %a{:href => "#!"} Second Sidebar Link
-  %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
-    %i.mdi-navigation-menu
-  %ul.right.flow-text
-    %li.pad-right.hide-on-med-and-down
-      -if current_user
+    -if current_user
+      %li.pad-right.hide-on-med-and-down
+        = link_to "Profile", user_path(@user), id: "user_show"
+      %li.pad-right.hide-on-med-and-down
         Signed in as
         = succeed "!" do
           %strong= current_user.name
-    %li
-      - if current_user
+      %li
         = link_to "Sign out", signout_path, id: "sign_out"
-      - else
+    -else
+      %li
+        = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
+  %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
+    %i.mdi-navigation-menu
+  %ul.right.flow-text
+    -if current_user
+      %li.pad-right.hide-on-med-and-down
+        = link_to "Profile", user_path(@user), id: "user_show"
+      %li.pad-right.hide-on-med-and-down
+        Signed in as
+        = succeed "!" do
+          %strong= current_user.name
+      %li
+        = link_to "Sign out", signout_path, id: "sign_out"
+    -else
+      %li
         = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
 
