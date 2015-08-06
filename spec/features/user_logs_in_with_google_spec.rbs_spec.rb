@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.feature "UserLogsInWithGoogle", type: :feature do
+RSpec.feature "User logs in with Google", type: :feature do
   include OmniAuthUser
 
   before do
