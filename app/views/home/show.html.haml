@@ -2,7 +2,7 @@
   - unless current_user
     .col.m6
       .card.center-align.greeting-customer
-        %a{:href => "/auth/google_oauth2"}
+        %a{:href => "/auth/google_oauth2?role=customer"}
           .card-content
             %p.grey-text.text-darken-4.flow-text
               %strong Your Time is Valuable!
@@ -10,7 +10,7 @@
               %strong Get Help Now!
     .col.m6
       .card.center-align.greeting-dev
-        %a{:href => "/auth/google_oauth2"}
+        %a{:href => "/auth/google_oauth2?role=developer"}
           .card-content
             %p.grey-text.text-darken-4.flow-text
               %strong Your Time is Valuable!

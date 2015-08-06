@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   #validates :oauth_expires_at, presence: true
 
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth, role)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider         = auth.provider
       user.uid              = auth.uid
@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
       user.email            = auth.info.email
       user.oauth_token      = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.role             = role
       user.save!
     end
   end
