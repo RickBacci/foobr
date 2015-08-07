@@ -26,6 +26,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(
         :provider, :uid, :name, :email, :first_name,
         :last_name, :image, :oauth_token,
-        :oauth_expires_at, :role, :company_name)
+        :oauth_expires_at, :role, :company_name, :experience)
     end
 end

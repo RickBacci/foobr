@@ -5,10 +5,10 @@
       %i.mdi-navigation-menu
     %ul#nav.right.flow-text
       -if current_user
-        %li.pad-right.hide-on-med-and-down
-          = link_to "Profile", user_path(current_user), id: "user_show"
-        %li.pad-right.hide-on-med-and-down
-          Signed in as
+        %li.pad-sides.hide-on-med-and-down
+          = link_to "#{current_user.role.titlecase} Profile", user_path(current_user), id: "profile"
+        %li.pad-sides.hide-on-med-and-down
+          "Signed in as"
           = succeed "!" do
             %strong= current_user.name
         %li
@@ -18,13 +18,13 @@
           = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
     %ul#slide-out.side-nav.flow-text
       -if current_user
-        %li.pad-right.hide-on-med-and-up.black
+        %li.pad-sides.hide-on-med-and-up.black
           Signed in as
           = succeed "!" do
             %strong= current_user.name
-        %li.pad-right.hide-on-med-and-up
-          = link_to "Profile", user_path(current_user), id: "user_show"
-        %li.pad-right.hide-on-med-and-up
+        %li.pad-sides.hide-on-med-and-up
+          = link_to "#{current_user.role.titlecase} Profile", user_path(current_user), id: "user_show"
+        %li.pad-sides.hide-on-med-and-up
           = link_to "Sign out", signout_path, id: "sign_out"
       -else
         %li

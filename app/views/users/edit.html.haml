@@ -13,6 +13,8 @@
         = form_for current_user do |f|
           = f.label :company_name
           = f.text_field :company_name
+          = f.label :experience
+          = f.text_area :experience
           = f.submit "Update My Profile"
 .row
   .col.m12
