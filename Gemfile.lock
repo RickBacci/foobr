@@ -252,6 +252,7 @@ DEPENDENCIES
   byebug
   capybara
   database_cleaner
+  faraday
   figaro
   foreman
   haml-rails

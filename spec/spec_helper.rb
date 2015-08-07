@@ -1,16 +1,18 @@
 require 'rubygems'
 require 'webmock/rspec'
+require 'faraday'
 require 'vcr'
 
+VCR.configure do |config|
+  config.hook_into :webmock
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.configure_rspec_metadata!
+  config.preserve_exact_body_bytes { true }
 
-VCR.configure do |c|
-  c.cassette_library_dir = 'spec/support/vcr_cassettes'
-  c.hook_into :webmock
-  c.configure_rspec_metadata!
-
-  c.default_cassette_options = { :serialize_with => :json }
-
-  c.before_record do |r|
+  config.default_cassette_options = {
+    serialize_with: :json
+  }
+  config.before_record do |r|
     r.request.headers.delete("Authorization")
   end
 end
