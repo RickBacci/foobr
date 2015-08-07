@@ -24,26 +24,31 @@ RSpec.feature "User", type: :feature do
     end
   end
 
-  it 'can create a customer profile' do
+  it 'can edit thier profile' do
     VCR.use_cassette("profile_as_customer") do
       visit root_path
 
       expect(page.status_code).to eql(200)
 
-      click_link "Sign in with Google"
+      find('#customer_signup').click
 
       expect(page).to have_css("#sign_out")
       expect(page).to have_link("Sign out")
-      expect(page).to have_link("Profile")
+      expect(page).to have_link("Customer Profile")
 
-      within('#nav') { click_link "Profile" }
+      within('#nav') { click_link "Customer Profile" }
 
       expect(page.status_code).to eql(200)
       expect(page).to have_content('Customer Profile')
-      expect(page).to have_link('Edit Profile')
 
-      click_link 'Edit Profile'
+      expect(page).to have_link('Edit')
+      expect(page).to_not have_content("Best Company Ever!")
 
+      click_link 'Edit'
+
+      fill_in "Company name", with: "Best Company Ever!"
+      click_button "Update My Profile"
+      expect(page).to have_content("Best Company Ever!")
     end
   end
 end

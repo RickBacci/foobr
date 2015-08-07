@@ -2,7 +2,7 @@
   - unless current_user
     .col.m6
       .card.center-align.greeting-customer
-        %a{:href => "/auth/google_oauth2?role=customer"}
+        %a{:href => "/auth/google_oauth2?role=customer", id: 'customer_signup', name: 'Signup as a Customer' }
           .card-content
             %p.grey-text.text-darken-4.flow-text
               %strong Your Time is Valuable!
