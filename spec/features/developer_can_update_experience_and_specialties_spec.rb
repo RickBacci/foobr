@@ -26,6 +26,25 @@ RSpec.feature "User can edit profile", type: :feature do
         expect(page).to have_content('Tons!')
       end
     end
+
+    it 'can add specialties to their profile' do
+      VCR.use_cassette("dev_update_specialty") do
+        visit root_path
+
+        click_link "Sign up as a Developer"
+        within('#nav') { click_link "Developer Profile" }
+
+        expect(page).to_not have_content('Ruby on Rails')
+
+        click_link "Edit"
+        click_link "View Specialties"
+        click_link "Add Specialty"
+        fill_in "specialty name", with: "Ruby on Rails"
+        click_button "Submit"
+
+        expect(page).to have_content('Ruby on Rails')
+      end
+    end
   end
 end
 

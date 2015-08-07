@@ -11,9 +11,15 @@ class SpecialtiesController < ApplicationController
   def create
     @specialty = Specialty.create(specialty_params)
     if @specialty
-      redirect to specialties_path
+      redirect_to specialties_path
     else
       render :back
     end
   end
+
+  private
+
+    def specialty_params
+      params.require(:specialty).permit([:name])
+    end
 end
