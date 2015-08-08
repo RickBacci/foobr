@@ -8,9 +8,9 @@ $(document).ready(function() {
     var searchText = e.target.value;
 
     $(allDevelopers).each(function (index, developer) {
-      var name = $(developer).find('.name').text().toLowerCase();
+      var specialtyName = $(developer).find('.specialty').text().toLowerCase();
 
-      var matches = name.toLowerCase().indexOf(searchText) !== -1;
+      var matches = specialtyName.toLowerCase().indexOf(searchText) !== -1;
 
       $(developer).toggle(matches);
     });
