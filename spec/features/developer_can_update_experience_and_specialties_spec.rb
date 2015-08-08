@@ -4,7 +4,7 @@ RSpec.feature "User can edit profile", type: :feature do
   include OmniAuthUser
 
   before do
-    # OmniAuth.config.mock_auth[:google_oauth2] = nil
+    OmniAuth.config.mock_auth[:google_oauth2] = nil
     Capybara.app = Foobr::Application
     stub_omniauth
   end
@@ -39,7 +39,7 @@ RSpec.feature "User can edit profile", type: :feature do
         click_link "Edit"
         click_link "View Specialties"
         click_link "Add Specialty"
-        fill_in "specialty name", with: "Ruby on Rails"
+        within('.new_specialty') { fill_in "Name", with: "Ruby on Rails" }
         click_button "Submit"
 
         expect(page).to have_content('Ruby on Rails')

@@ -1,10 +1,10 @@
-
 .row
   .col.m8.offset-2
   -if current_user.role == 'developer'
     .card.center-panel.center-align.black
-      .card-content.grey-text
+      .card-content.grey-text.new_specialty
+
         = form_for current_user do |f|
-          = f.label :specialty_name
-          = f.text_field :specialty_name
+          = f.label :name
+          = f.text_field :name
           = f.submit "Submit"
