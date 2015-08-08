@@ -5,11 +5,11 @@ class SpecialtiesController < ApplicationController
   end
 
   def new
-    @specialty = Specialty.new
+    @specialty = current_user.specialties.new
   end
 
   def create
-    @specialty = Specialty.create(specialty_params)
+    @specialty = current_user.specialties.create(specialty_params)
     if @specialty
       redirect_to specialties_path
     else
@@ -20,6 +20,6 @@ class SpecialtiesController < ApplicationController
   private
 
     def specialty_params
-      params.require(:specialty).permit([:name])
+      params.require(:specialty).permit([:specialty_name])
     end
 end
