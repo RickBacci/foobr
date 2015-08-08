@@ -26,6 +26,24 @@
     %input.search-specialty{type: 'text'}
     %label{} Search by Specialty
 
+.row
+  .col.m12
+    %ul.collection
+      - @developers.each do |developer|
+        %li.collection-item.avatar
+          %img.circle.responsive-img
+            =image_tag developer.image, { class: "circle", alt: "Picture of Developer" }
+            %span.title
+              = developer.name
+            %p
+              Experience
+              = developer.experience
+              %br
+              Specialties
+              - developer.specialties.each do |specialty|
+                = specialty.specialty_name
+            %a.secondary-content{:href => "#!"}
+              %i.material-icons grade
 
 .row
   .col.m12
