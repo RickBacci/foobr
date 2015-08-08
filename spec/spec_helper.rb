@@ -2,12 +2,14 @@ require 'rubygems'
 require 'webmock/rspec'
 require 'faraday'
 require 'vcr'
+real_requests = ENV['REAL_REQUESTS']
 
 VCR.configure do |config|
   config.hook_into :webmock
-  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.cassette_library_dir = 'spec/support/vcr_cassettes'
   config.configure_rspec_metadata!
-  config.preserve_exact_body_bytes { true }
+  config.allow_http_connections_when_no_cassette = true if real_requests
+  config.default_cassette_options = {:record => :new_episodes}
 
   config.default_cassette_options = {
     serialize_with: :json
@@ -17,6 +19,12 @@ VCR.configure do |config|
   end
 end
 
+
+RSpec.configure do |config|
+  config.before(:each) do
+    VCR.eject_cassette
+  end if real_requests
+end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
