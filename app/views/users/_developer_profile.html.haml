@@ -38,10 +38,10 @@
                   Experience
                   = current_user.experience
               %li
-                %span
-                  Specialties
-                  %ul
-                  - current_user.specialties.each do |area|
-                    %li
-                      = area
+                %ul.collection.with-header
+                  %li.collection-header
+                    %h4 Specialties
+                  - current_user.specialties.each do |specialty|
+                    %li.collection-item
+                      = specialty.specialty_name
 
