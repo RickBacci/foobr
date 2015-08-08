@@ -4,7 +4,7 @@
     .card.center-panel.center-align.black
       .card-content.grey-text.new_specialty
 
-        = form_for current_user do |f|
-          = f.label :name
-          = f.text_field :name
+        = form_for [@specialty] do |f|
+          = f.label :specialty_name
+          = f.text_field :specialty_name
           = f.submit "Submit"
