@@ -24,5 +24,9 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def specialty_names
+    specialties.map(&:specialty_name)
+  end
 end
 
