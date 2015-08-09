@@ -1,7 +1,7 @@
 class SpecialtiesController < ApplicationController
 
   def index
-    @specialties = Specialty.all
+    @specialties = Specialty.pluck(:specialty_name).uniq
   end
 
   def new
