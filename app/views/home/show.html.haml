@@ -1,63 +1,45 @@
-.row
-  - unless current_user
-    .col.m6
-      .card.center-align.greeting-customer
-        %a{:href => "/auth/google_oauth2?role=customer", id: 'customer_signup', name: 'Signup as a Customer' }
-          .card-content
-            %p.grey-text.text-darken-4.flow-text
-              %strong Your Time is Valuable!
-            %p.flow-text
-              %strong Get Help Now!
-            %p.flow-text
-              Sign up as a Customer
-    .col.m6
-      .card.center-align.greeting-dev
-        %a{:href => "/auth/google_oauth2?role=developer"}
-          .card-content
-            %p.grey-text.text-darken-4.flow-text
-              %strong Your Time is Valuable!
-            %p.flow-text
-              %strong Help Now!
-            %p.flow-text
-              Sign up as a Developer
+.container
+  .row
+    - unless current_user
+      .col.m6
+        .card.center-align.greeting-customer
+          %a{:href => "/auth/google_oauth2?role=customer", id: 'customer_signup', name: 'Signup as a Customer' }
+            .card-content
+              %p.grey-text.text-darken-4.flow-text
+                %strong Your Time is Valuable!
+              %p.flow-text
+                %strong Get Help Now!
+              %p.flow-text
+                Sign up as a Customer
+      .col.m6
+        .card.center-align.greeting-dev
+          %a{:href => "/auth/google_oauth2?role=developer"}
+            .card-content
+              %p.grey-text.text-darken-4.flow-text
+                %strong Your Time is Valuable!
+              %p.flow-text
+                %strong Help Now!
+              %p.flow-text
+                Sign up as a Developer
 
-.row
-  .col.m12
-    %input.search-specialty{type: 'text'}
-    %label{} Search by Specialty
+  .row
+    .col.m12
+      %input.search-specialty{type: 'text'}
+      %label{} Search by Specialty
 
-.row
-  .col.m12
-    %ul.collection
-      - @developers.each do |developer|
-        %li.collection-item.avatar
-          %img.circle.responsive-img
-            =image_tag developer.image, { class: "circle", alt: "Picture of Developer" }
-            %span.title
-              = developer.name
-            %p
-              Experience
-              = developer.experience
-              %br
-              Specialties
-              - developer.specialties.each do |specialty|
-                = specialty.specialty_name
-            %a.secondary-content{:href => "#!"}
-              %i.material-icons grade
-
-.row
-  .col.m12
-    %table.bordered.centered.hoverable.z-depth-5.white
-      %thead
-        %tr
-          %th{"data-field" => "id"} Total hours available
-          %th{"data-field" => "experience"} Years experience
-          %th{"data-field" => "name"} Dev Name
-          %th{"data-field" => "expertise"} Areas of Expertise
-      %tbody
+  .row
+    .col.m12
+      %ul.collection
         - @developers.each do |developer|
-          %tr.developer
-            %td 8
-            %td 8
-            %td.name= developer.name
-            %td.specialty= developer.specialty_names.join(" ")
+          %li.developer.collection-item.avatar
+            %img.circle.responsive-img
+              =image_tag developer.image, { class: "circle", alt: "Picture of Developer" }
+            %h5
+              .name= developer.name
+            %p
+              Specialties
+              .specialty= developer.specialty_names.join(" ")
+
+              %a.secondary-content{:href => "#!"}
+                %i.material-icons grade
+

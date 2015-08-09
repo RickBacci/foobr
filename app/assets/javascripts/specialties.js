@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // Get a list of all developers
-  var allDevelopers = $('tr.developer');
+  var allDevelopers = $('.developer');
 
   // Add a 'change' event handler for the input element
   $('input.search-specialty').on('change keyup', function(e) {
