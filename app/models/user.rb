@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :specialties
+  has_many :projects
 
   validates :provider, presence: true
   validates :uid, presence: true
