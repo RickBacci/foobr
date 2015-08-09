@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  require 'googleauth'
+  require 'google/apis/calendar_v3'
+
   has_many :specialties
   has_many :projects
 
@@ -27,5 +30,12 @@ class User < ActiveRecord::Base
   def specialty_names
     specialties.map(&:specialty_name)
   end
+
+  def calendar_client
+    calendar = Google::Apis::CalendarV3::CalendarService.new
+    calendar.request_options.authorization = oauth_token
+    calendar
+  end
+
 end
 
