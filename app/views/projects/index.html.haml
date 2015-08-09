@@ -1,0 +1,11 @@
+.row
+  .col.s12.m6
+    %h1
+      Project List
+      .card.blue-grey.darken-1
+        .card-content.white-text
+          -@projects.each do |project|
+            %span.card-title
+              = project.name
+              %br
+              %p= project.description

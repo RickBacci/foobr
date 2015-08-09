@@ -5,6 +5,9 @@
       %i.mdi-navigation-menu
     %ul#nav.right.flow-text
       -if current_user
+        -if current_user.role == 'customer'
+          %li.pad-sides.hide-on-med-and-down
+            = link_to "Create a New Project", new_project_path
         %li.pad-sides.hide-on-med-and-down
           = link_to "#{current_user.role.titlecase} Profile", user_path(current_user), id: "profile"
         %li.pad-sides.hide-on-med-and-down

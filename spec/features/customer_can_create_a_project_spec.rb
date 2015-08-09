@@ -23,12 +23,13 @@ RSpec.feature "Customer", type: :feature do
     expect(page.status_code).to eql(200)
     expect(page).to have_content('New Project')
 
-    fill_in "Name", with: "ABC Company website"
-    fill_in "Description", with: 'I would like my About page updated'
+      fill_in "Name", with: "ABC Company website"
+      fill_in "Description", with: 'I would like my About page updated'
 
     click_button "Create Project"
+
     expect(page).to have_content("ABC Company website")
-    expect(page).to have_content("I would like by About page updated")
+    expect(page).to have_content("I would like my About page updated")
   end
 end
 

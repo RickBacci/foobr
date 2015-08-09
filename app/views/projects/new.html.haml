@@ -1,0 +1,13 @@
+.row
+  .col.m8.offset-2
+  -if current_user.role == 'customer'
+    .card.center-panel.center-align.black
+      .card-content.grey-text.new_project
+
+        = form_for @project do |f|
+          = f.label :name
+          = f.text_field :name
+          = f.label :description
+          = f.text_area :description
+
+          = f.submit "Create Project"
