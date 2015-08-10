@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :oauth_token, presence: true
 
-  def self.from_omniauth(auth, role)
+  def self.from_omniauth(auth, role='client')
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider         = auth.provider
       user.uid              = auth.uid

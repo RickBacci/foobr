@@ -1,6 +1,52 @@
-- if current_user.role == 'customer'
-  = render "users/customer_profile"
--else
-  = render "users/developer_profile"
+.container
+  .row
+    .col.s6
+      %h5.left-align
+        Profile
+    .col.s6.right-align
+      %h5= link_to "Edit Profile", edit_user_path(current_user), id: "edit_profile"
+  .row
+    .col.s12
+      .card-panel.center-panel
+        %ul
+          %li
+            %img.circle.responsive-img
+              =image_tag current_user.image, { class: "circle", alt: "Picture of User" }
+          %li
+            %span
+              First Name
+              = current_user.first_name
+          %li
+            %span
+              Last Name
+              = current_user.last_name
+          %li
+            %span
+              Email
+              = current_user.email
+          %li
+            %span
+              Company Name
+              = current_user.company_name
+          %li
+            %span
+              Current Role
+              = current_user.role
 
+  -if current_user.role == 'developer'
+    .row
+      .col.m12
+        =link_to "View Specialties", specialties_path
+        %ul
+          %li
+            %span
+              Experience
+              = current_user.experience
+          %li
+            %ul.collection.with-header
+              %li.collection-header
+                %h4 Specialties
+              - current_user.specialties.each do |specialty|
+                %li.collection-item
+                  = specialty.specialty_name
 

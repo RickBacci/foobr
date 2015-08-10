@@ -1,21 +1,24 @@
-.row
-  .col.m8.offset-2
-  -if current_user.role == 'customer'
-    .card.center-panel.center-align.black
-      .card-content.grey-text
-        = form_for current_user do |f|
-          = f.label :company_name
-          = f.text_field :company_name
-          = f.submit "Update My Profile"
-  -else
-    .card.center-panel.center-align.black
-      .card-content.grey-text
-        = form_for current_user do |f|
-          = f.label :company_name
-          = f.text_field :company_name
-          = f.label :experience
-          = f.text_area :experience
-          = f.submit "Update My Profile"
-.row
-  .col.m12
-    =link_to "View Specialties", specialties_path
+.container
+  .row
+    .col.m8.offset-2
+    -if current_user
+      .card.center-panel
+        .card-content
+          = form_for current_user do |f|
+            = f.label :first_name
+            = f.text_field :first_name
+            = f.label :last_name
+            = f.text_field :last_name
+            = f.label :email
+            = f.text_field :email
+            = f.label :company_name
+            = f.text_field :company_name
+            = f.label :role
+            = f.text_field :role
+
+            = f.submit "Update My Profile"
+
+  -if current_user.role == 'developer'
+    .row
+      .col.m12
+        =link_to "View Specialties", specialties_path

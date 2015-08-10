@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
   def create
-    if role_set?
-      role = request.env['omniauth.params']['role']
+    if role
       user = User.from_omniauth(env["omniauth.auth"], role)
       session[:user_id] = user.id
     else
-      raise "Role not set!"
+      user = User.from_omniauth(env["omniauth.auth"])
+      session[:user_id] = user.id
     end
 
     if current_user
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def role_set?
+  def role
     request.env['omniauth.params']['role']
   end
 end

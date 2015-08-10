@@ -3,14 +3,14 @@
     - unless current_user
       .col.m6
         .card.center-align.greeting-customer
-          %a{:href => "/auth/google_oauth2?role=customer", id: 'customer_signup', name: 'Signup as a Customer' }
+          %a{:href => "/auth/google_oauth2?role=client", id: 'client_signup', name: 'Client Signup' }
             .card-content
               %p.grey-text.text-darken-4.flow-text
                 %strong Your Time is Valuable!
               %p.flow-text
                 %strong Get Help Now!
               %p.flow-text
-                Sign up as a Customer
+                Sign up as a Client
       .col.m6
         .card.center-align.greeting-dev
           %a{:href => "/auth/google_oauth2?role=developer"}
@@ -22,18 +22,19 @@
               %p.flow-text
                 Sign up as a Developer
 
-.row
-  .col.m12
-    = link_to "Primary Calendar", calendars_primary_path
-
-
   .row
-    .col.m12
+    .col.s12
+      -if current_user
+        = link_to "Primary Calendar", calendars_primary_path
+        %br
+        = link_to "Create a New Project", new_project_path
+  .row
+    .col.s12
+      %label Search by Specialty
       %input.search-specialty{type: 'text'}
-      %label{} Search by Specialty
 
   .row
-    .col.m12
+    .col.s12
       %ul.collection
         - @developers.each do |developer|
           %li.developer.collection-item.avatar
@@ -44,7 +45,3 @@
             %p
               Specialties
               .specialty= developer.specialty_names.join(" ")
-
-              %a.secondary-content{:href => "#!"}
-                %i.material-icons grade
-

@@ -1,15 +1,12 @@
 %nav.pad-sides
   .nav-wrapper
     %a.brand-logo{:href => "/"} FooBr
-    %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
+    %a.button-collapse{"data-activates" => "slide-out", :href => "/"}
       %i.mdi-navigation-menu
     %ul#nav.right.flow-text
       -if current_user
-        -if current_user.role == 'customer'
-          %li.pad-sides.hide-on-med-and-down
-            = link_to "Create a New Project", new_project_path
         %li.pad-sides.hide-on-med-and-down
-          = link_to "#{current_user.role.titlecase} Profile", user_path(current_user), id: "profile"
+          = link_to "View Profile", user_path(current_user), id: "profile"
         %li.pad-sides.hide-on-med-and-down
           "Signed in as"
           = succeed "!" do
@@ -18,7 +15,7 @@
           = link_to "Sign out", signout_path, id: "sign_out"
       -else
         %li
-          = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
+          = link_to "Sign in with Google", login_path, id: "sign_in"
     %ul#slide-out.side-nav.flow-text
       -if current_user
         %li.pad-sides.hide-on-med-and-up.black
@@ -26,7 +23,7 @@
           = succeed "!" do
             %strong= current_user.name
         %li.pad-sides.hide-on-med-and-up
-          = link_to "#{current_user.role.titlecase} Profile", user_path(current_user), id: "user_show"
+          = link_to "View Profile", user_path(current_user), id: "user_show"
         %li.pad-sides.hide-on-med-and-up
           = link_to "Sign out", signout_path, id: "sign_out"
       -else
