@@ -1,4 +1,5 @@
 class SpecialtiesController < ApplicationController
+  respond_to :json
 
   def index
     @specialties = Specialty.pluck(:specialty_name).uniq
@@ -15,6 +16,10 @@ class SpecialtiesController < ApplicationController
     else
       render :back
     end
+  end
+
+  def get_specialties
+    respond_with Specialty.all, location: nil
   end
 
   private
