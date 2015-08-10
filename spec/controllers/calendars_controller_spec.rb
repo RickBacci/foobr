@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe ProjectsController, type: :controller do
+RSpec.describe CalendarsController, type: :controller do
 
-  describe "GET #new" do
+  describe "GET #primary" do
     xit "returns http success" do
-
-      get :new
+      get :primary
       expect(response).to have_http_status(:success)
     end
   end
+
 end

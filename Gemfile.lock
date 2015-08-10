@@ -78,7 +78,7 @@ GEM
     git-version-bump (0.15.1)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    google-api-client (0.9.pre2)
+    google-api-client (0.9.pre3)
       activesupport (>= 3.2)
       addressable (~> 2.3)
       googleauth (~> 0.2)
@@ -290,7 +290,7 @@ DEPENDENCIES
   faraday
   figaro
   foreman
-  google-api-client (= 0.9.pre2)
+  google-api-client (= 0.9.pre3)
   googleauth
   haml-rails
   jbuilder (~> 2.0)

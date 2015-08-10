@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  require 'googleauth'
+  require 'rubygems'
   require 'google/apis/calendar_v3'
 
   has_many :specialties

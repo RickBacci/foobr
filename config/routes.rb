@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :specialties, only: [:new, :create, :index]
   resources :projects, only: [:index, :new, :create]
 
+  get '/calendars/primary', to: 'calendars#primary'
+
   root to: "home#show"
 end
