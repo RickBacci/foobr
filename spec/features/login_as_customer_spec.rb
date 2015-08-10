@@ -16,7 +16,7 @@ RSpec.feature "User", type: :feature do
 
       expect(page.status_code).to eql(200)
 
-      click_link "Sign up as a Customer"
+      click_link "Sign up as a Client"
 
       expect(page).to have_css("#sign_out")
       expect(page).to have_link("Sign out")
@@ -30,16 +30,16 @@ RSpec.feature "User", type: :feature do
 
       expect(page.status_code).to eql(200)
 
-      find('#customer_signup').click
+      find('#client_signup').click
 
       expect(page).to have_css("#sign_out")
       expect(page).to have_link("Sign out")
-      expect(page).to have_link("Customer Profile")
+      expect(page).to have_link("Profile")
 
-      within('#nav') { click_link "Customer Profile" }
+      within('#nav') { click_link "Profile" }
 
       expect(page.status_code).to eql(200)
-      expect(page).to have_content('Customer Profile')
+      expect(page).to have_content('Profile')
 
       expect(page).to have_link('Edit')
       expect(page).to_not have_content("Best Company Ever!")

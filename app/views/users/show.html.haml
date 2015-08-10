@@ -33,20 +33,25 @@
               Current Role
               = current_user.role
 
-  -if current_user.role == 'developer'
-    .row
-      .col.m12
+  .row
+    .col.m12
+      -if current_user.role == 'developer'
+        %span#experience
+          Experience
+          = current_user.experience
+        %br
+  .row
+    .col.s6
+      %h5.left-align
+        Specialties
+    .col.s6.right-align
+      %h5
         =link_to "View Specialties", specialties_path
-        %ul
-          %li
-            %span
-              Experience
-              = current_user.experience
-          %li
-            %ul.collection.with-header
-              %li.collection-header
-                %h4 Specialties
-              - current_user.specialties.each do |specialty|
-                %li.collection-item
-                  = specialty.specialty_name
+  .row
+    .col.s12
+      %ul.collection.with-header
+        %li.collection-header
+          -current_user.specialties.each do |specialty|
+            %li.collection-item
+              = specialty.specialty_name
 

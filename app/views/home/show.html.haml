@@ -27,7 +27,8 @@
       -if current_user
         = link_to "Primary Calendar", calendars_primary_path
         %br
-        = link_to "Create a New Project", new_project_path
+        .new_project
+          = link_to "Create a New Project", new_project_path
   .row
     .col.s12
       %label Search by Specialty

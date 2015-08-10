@@ -15,6 +15,9 @@
             = f.text_field :company_name
             = f.label :role
             = f.text_field :role
+            - if current_user.role == 'developer'
+              = f.label :experience
+              = f.text_field :experience
 
             = f.submit "Update My Profile"
 
