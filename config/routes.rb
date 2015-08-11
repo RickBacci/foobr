@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :specialties, only: [:destroy, :new, :create, :index]
   resources :projects, only: [:index, :new, :create]
+  resources :user_specialties, only: [:destroy]
 
   get '/calendars/primary', to: 'calendars#primary'
 

@@ -2,8 +2,20 @@ class User < ActiveRecord::Base
   require 'rubygems'
   require 'google/apis/calendar_v3'
 
-  has_many :specialties
+  has_many :user_specialties
+  has_many :specialties, through: :user_specialties
+
   has_many :projects
+
+  has_many :developers, class_name: "Project",
+           foreign_key: "client_id"
+
+  belongs_to :client, class_name: "Project"
+
+  has_many :clients, class_name: "Project",
+           foreign_key: "developer_id"
+
+  belongs_to :developer, class_name: "Project"
 
   validates :provider, presence: true
   validates :uid, presence: true
