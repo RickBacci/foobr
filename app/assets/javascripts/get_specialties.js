@@ -13,6 +13,9 @@ $(document).ready(function() {
     {
       postSpecialties();
       console.log('key pressed!');
+
+      $('.ui-widget-content').hide();
+      $(this).val('');
     }
   });
 
@@ -41,10 +44,10 @@ function postSpecialties() {
     data: {specialty: {specialty_name: specialtyName }},
     dataType: "json",
     success: function(refreshSpecialties) {
-
+      console.log("hello world")
       $('ul.collection').prepend(
-          "<li class='collection-item'"
-          + "<button id='delete-specialty' name='delete-button' class=''>Delete</button>"
+          "<li class='collection-item'>"
+          + refreshSpecialties
           + "</li>"
           )
     },
