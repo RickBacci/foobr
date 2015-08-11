@@ -18,6 +18,13 @@ class SpecialtiesController < ApplicationController
     end
   end
 
+  def destroy
+    specialty = Specialty.find(params[:id])
+    current_user.specialties.delete(specialty)
+
+    redirect_to current_user
+  end
+
   def get_specialties
     respond_with Specialty.all, location: nil
   end

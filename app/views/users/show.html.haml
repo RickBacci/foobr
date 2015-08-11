@@ -33,28 +33,30 @@
               Current Role
               = current_user.role
 
-  .row
-    .col.m12
-      -if current_user.role == 'developer'
+  -if current_user.role == 'developer'
+    .row
+      .col.m12
         %span#experience
           Experience
           = current_user.experience
         %br
-  .row
-    .col.s12
-      %ul.collection.with-header
-        %li.collection-header
-          .row
-            .col.s6
-              %h5.left-align
-                Specialties
-            .col.s6.right-align
-              %h5
-                =link_to "View Specialties", specialties_path
-              .ui-widget
-                %label{:for => "tags"} Tags:
-                %input#tags
-          -current_user.specialties.each do |specialty|
-            %li.collection-item
-              = specialty.specialty_name
+    .row
+      .col.s12
+        %ul.collection.with-header
+          %li.collection-header
+            .row
+              .col.s6
+                %h5.left-align
+                  Specialties
+              .col.s6.right-align
+                %h5.ui-widget
+                  %label{:for => "tags"} Tags:
+                  %input#tags
+            -current_user.specialties.each do |specialty|
+              %li.collection-item
+                .row
+                  .col.s6
+                    = specialty.specialty_name
+                  .col.s6.right-align
+                    = button_to "Delete", specialty_path, method: :delete
 

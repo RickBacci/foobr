@@ -1,3 +1,4 @@
 class Specialty < ActiveRecord::Base
-  belongs_to :user
+  has_many :user_speciaties
+  has_many :users, through: :user_speciaties
 end
