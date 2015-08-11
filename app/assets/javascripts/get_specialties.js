@@ -4,8 +4,16 @@ $(document).ready(function() {
 
   getSpecialties();
 
-  $( "#tags" ).autocomplete({
+  $("#tags").autocomplete({
     source: availableTags
+  });
+
+  $("#tags").keypress(function(e){
+    if(e.keyCode == 13)
+    {
+      postSpecialties();
+      console.log('key pressed!');
+    }
   });
 
 });
@@ -20,6 +28,27 @@ function getSpecialties() {
           availableTags.push(tag.specialty_name);
         };
       });
+    }
+  });
+
+};
+
+function postSpecialties() {
+  var specialtyName = $('input#tags').val();
+  $.ajax({
+    url: '/specialties',
+    type: 'POST',
+    data: {specialty: {specialty_name: specialtyName }},
+    dataType: "json",
+    success: function(refreshSpecialties) {
+      $('ul.collection').prepend(
+          "<li class='collection-item'"
+          + "<button id='delete-specialty' name='delete-button' class=''>Delete</button>"
+          + "</li>"
+          )
+    },
+    error: function(xhr) {
+      console.log(xhr.responseText)
     }
   });
 
