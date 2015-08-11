@@ -32,14 +32,13 @@
             %span
               Current Role
               = current_user.role
+          - if current_user.role == 'developer'
+            %li
+              %span
+                Experience
+                = current_user.experience
 
   -if current_user.role == 'developer'
-    .row
-      .col.m12
-        %span#experience
-          Experience
-          = current_user.experience
-        %br
     .row
       .col.s12
         %ul.collection.with-header
@@ -58,5 +57,5 @@
                   .col.s6
                     = specialty.specialty_name
                   .col.s6.right-align
-                    = button_to "Delete", specialty_path, method: :delete
+                    = button_to "Delete", user_specialty_path, method: :delete, params: { specialty_id: specialty.id }
 
