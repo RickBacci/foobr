@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :specialties, only: [:destroy, :new, :create, :index]
   resources :projects, only: [:index, :new, :create]
-  resources :user_specialties, only: [:destroy]
   resources :user_specialties, only: [:index, :destroy]
 
-  get '/calendars/primary', to: 'calendars#primary'
+  get  '/calendars/primary', to: 'calendars#primary'
+  get  '/calendar/v3/users/me/calendarList', to: 'calendars#calendar_list', as: '/calendar_list'
+  post '/calendar/v3/calendars/foobr/events', to: 'calendars#create_event', as: '/create_event'
 
   root to: "home#show"
-end
+  end
+

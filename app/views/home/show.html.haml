@@ -23,12 +23,16 @@
                 Sign up as a Developer
 
   .row
-    .col.s12
+    .col.s6
       -if current_user
         = link_to "Primary Calendar", calendars_primary_path
-        %br
-        .new_project
-          = link_to "Create a New Project", new_project_path
+        = link_to "Calendar list", calendar_list_path
+        = button_to "Create Event", create_event_path, method: :post
+    .col.s6
+      -if current_user
+        -if current_user.role == 'client'
+          .new_project
+            = link_to "Create a New Project", new_project_path
   .row
     .col.s12
       %label Search by Specialty
@@ -45,4 +49,4 @@
               .name= developer.name
             %p
               Specialties
-              .specialty= developer.specialty_names.join(" ")
+              .specialty= developer.specialty_names.join(", ")
