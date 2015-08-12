@@ -49,5 +49,15 @@ class User < ActiveRecord::Base
     calendar.request_options.authorization = oauth_token
     calendar
   end
+
+
+    Calendar = Google::Apis::CalendarV3
+  def calendar
+    calendar = Calendar::CalendarService.new
+    calendar.client_options.application_name = "fooBr"
+    calendar.client_options.application_version = "1.7.5"
+    calendar.request_options.authorization = oauth_token
+    calendar
+  end
 end
 
