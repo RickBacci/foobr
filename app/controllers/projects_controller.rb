@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
       flash[:message] = "New project created!"
       redirect_to projects_path
     else
+      flash[:error] = "New project creation failed!"
       render :back
     end
   end

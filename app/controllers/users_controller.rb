@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       flash[:success] = "Account Updated!"
       redirect_to @user
     else
-      flash[:errors] = "Invalid Attributes"
+      flash[:error] = "Invalid Attributes"
       redirect_to :back
     end
   end

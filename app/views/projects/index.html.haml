@@ -1,11 +1,13 @@
-.row
-  .col.s12.m6
-    %h1
-      Project List
-      .card.blue-grey.darken-1
-        .card-content.white-text
-          -@projects.each do |project|
-            %span.card-title
+.container
+  .row
+    .col.s12
+    -if current_user.role == 'client'
+      %h5
+        Project List
+      %ul.collection
+        - @projects.each do |project|
+          %li.developer.collection-item
+            %p
               = project.name
-              %br
-              %p= project.description
+              = project.description
+
