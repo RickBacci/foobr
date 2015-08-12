@@ -35,6 +35,9 @@ $(document).ready(function() {
               return $(this).data('id') === id;
             });
             $specialty.remove();
+          },
+          error: function(xhr) {
+            console.log(xhr.responseText)
           }
         })
       });
