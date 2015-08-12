@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  if Rails.env != 'development'
+    force_ssl only: [:create]
   def create
     if role
       user = User.from_omniauth(env["omniauth.auth"], role)

@@ -41,7 +41,7 @@
   -if current_user.role == 'developer'
     .row
       .col.s12
-        %ul.collection.with-header
+        %ul.specialties.collection.with-header
           %li.collection-header
             .row
               .col.s6
@@ -51,11 +51,3 @@
                 %h5.ui-widget
                   %label{:for => "tags"} Tags:
                   %input#tags
-            -current_user.specialties.each do |specialty|
-              %li.collection-item
-                .row
-                  .col.s6
-                    = specialty.specialty_name
-                  .col.s6.right-align
-                    = button_to "Delete", user_specialty_path, method: :delete, params: { specialty_id: specialty.id }
-

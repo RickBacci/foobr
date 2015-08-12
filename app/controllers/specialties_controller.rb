@@ -1,5 +1,5 @@
 class SpecialtiesController < ApplicationController
-  respond_to :json
+  respond_to :json, :html
 
   def index
     @specialties = Specialty.pluck(:specialty_name).uniq
@@ -12,9 +12,9 @@ class SpecialtiesController < ApplicationController
   def create
     @specialty = current_user.specialties.create(specialty_params)
     if @specialty
-      redirect_to specialties_path
+      respond_with @specialty
     else
-      render :back
+      # TODO: respond with errors
     end
   end
 
