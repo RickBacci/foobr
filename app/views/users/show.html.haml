@@ -51,3 +51,24 @@
                 %h5.ui-widget
                   %label{:for => "tags"} Tags:
                   %input#tags
+
+  .row
+    .col.s12
+      %table
+        %thead
+          %tr
+            %th{"data-field" => "id"}
+              Start time
+            %th{"data-field" => "name"}
+              End time
+            %th{"data-field" => "price"}
+              Description
+            - current_user.foobr_calendar.items.each do |event|
+              %tbody
+                %tr
+                  %td
+                    = event.start.date_time
+                  %td
+                    = event.end.date_time
+                  %td
+                    = event.description

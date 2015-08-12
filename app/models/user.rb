@@ -8,12 +8,12 @@ class User < ActiveRecord::Base
   has_many :projects
 
   has_many :developers, class_name: "Project",
-           foreign_key: "client_id"
+    foreign_key: "client_id"
 
   belongs_to :client, class_name: "Project"
 
   has_many :clients, class_name: "Project",
-           foreign_key: "developer_id"
+    foreign_key: "developer_id"
 
   belongs_to :developer, class_name: "Project"
 
@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
 
-    Calendar = Google::Apis::CalendarV3
+  Calendar = Google::Apis::CalendarV3
   def calendar
     calendar = Calendar::CalendarService.new
     calendar.client_options.application_name = "fooBr"
@@ -59,5 +59,12 @@ class User < ActiveRecord::Base
     calendar.request_options.authorization = oauth_token
     calendar
   end
+
+
+  def foobr_calendar
+    @id ||= calendar.list_calendar_lists.items.detect { |item| item.summary == "foobr" }.id
+    calendar.list_events(@id)
+  end
+
 end
 
