@@ -20,27 +20,8 @@ $(document).ready(function() {
       var markup = data.map(renderSpecialtyLi);
       $('.specialties').append(markup);
 
-      // bindDeleteEvent()
-      $('.delete-specialty').on('click', function() {
-        var id = $(this).data('id');
+       bindDeleteEvent();
 
-        $.ajax({
-          url: '/user_specialties/1?specialty_id=' + id, // TODO
-          type: 'DELETE',
-          success: function() {
-            // If the server successfuly destroys the specialty,
-            // remove it from the DOM
-            // removeSpecialty(id)
-            var $specialty = $('.specialties li').filter(function() {
-              return $(this).data('id') === id;
-            });
-            $specialty.remove();
-          },
-          error: function(xhr) {
-            console.log(xhr.responseText)
-          }
-        })
-      });
     },
     error: function(xhr) {
       console.log(xhr.responseText)
@@ -84,7 +65,11 @@ function postSpecialty(specialtyName) {
       // Append the newly created specialty to the DOM
       console.log(data);
       var markup = renderSpecialtyLi(data);
+
       $('.specialties').append(markup);
+
+      bindDeleteEvent();
+
     },
     error: function(xhr) {
       console.log(xhr.responseText)
@@ -110,4 +95,28 @@ function renderSpecialtyLi(specialty) {
       +   "</div>"
       + "</li>"
       );
+}
+
+function bindDeleteEvent() {
+  $('.delete-specialty').on('click', function() {
+    var id = $(this).data('id');
+
+    $.ajax({
+      url: '/user_specialties/1?specialty_id=' + id, // TODO
+      type: 'DELETE',
+      success: function() {
+        // If the server successfuly destroys the specialty,
+        // remove it from the DOM
+        // removeSpecialty(id)
+        var $specialty = $('.specialties li').filter(function() {
+          return $(this).data('id') === id;
+        });
+        $specialty.remove();
+      },
+      error: function(xhr) {
+        console.log(xhr.responseText)
+      }
+    })
+  });
+
 }
