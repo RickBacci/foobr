@@ -11,4 +11,49 @@
             = f.label :description
             = f.text_area :description
 
+            .row
+              .col.s12
+                %label Select a Developer by Specialty
+                %input.search-specialty{type: 'text'}
+
+            .row
+              .col.s12
+                %ul.collection
+                  - @developers.each do |developer|
+                    %li.developer.collection-item.avatar
+                      .row
+                        .col.s3
+                          %img.circle.responsive-img
+                            =image_tag developer.image, { class: "circle", alt: "Picture of Developer" }
+                          %h5
+                            .name= developer.name
+                          %p
+                            Specialties
+                            .specialty= developer.specialty_names.join(", ")
+                        .col.s9
+                          %table
+                            %thead
+                              %tr
+                                %th{"data-field" => "start_time"}
+                                  Start time
+                                %th{"data-field" => "end_time"}
+                                  End time
+                                %th{"data-field" => "description"}
+                                  Description
+                                - developer.foobr_calendar.items.each do |event|
+                                  %tbody
+                                    %tr
+                                      %td
+                                        = event.start.date_time.strftime("%m/%d/%Y - %I:%M:%S %P")
+                                      %td
+                                        = event.end.date_time.strftime("%m/%d/%Y - %I:%M:%S %P")
+                                      %td
+                                        = event.description
+                                      %td
+                                        %input.filled-in{:id => event.id, :type => "checkbox"}
+                                        %label{ :for => event.id }
+
             = f.submit "Create Project"
+
+
+

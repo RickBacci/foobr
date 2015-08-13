@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.new
+    @developers = User.where(role: 'developer')
   end
 
   def create

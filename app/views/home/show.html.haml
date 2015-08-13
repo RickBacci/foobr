@@ -24,11 +24,9 @@
 
   .row
     .col.s6
-      -if current_user
-        = link_to "Primary Calendar", calendars_primary_path
-        = link_to "Calendar list", calendar_list_path
-        = button_to "Create Event", create_event_path, method: :post
-    .col.s6
+      -if current_user && current_user.role == 'client'
+        = link_to "Project List", projects_path
+    .col.s6.right-align
       -if current_user
         -if current_user.role == 'client'
           .new_project

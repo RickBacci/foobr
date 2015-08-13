@@ -1,13 +1,35 @@
 .container
   .row
-    .col.s12
-    -if current_user.role == 'client'
-      %h5
-        Project List
-      %ul.collection
-        - @projects.each do |project|
-          %li.developer.collection-item
-            %p
-              = project.name
-              = project.description
+    .col.s6
+      -if current_user
+        = link_to "Home", root_path
+    .col.s6.right-align
+      -if current_user
+        -if current_user.role == 'client'
+          .new_project
+            = link_to "Create a New Project", new_project_path
 
+  .row
+    .col.s12
+      -if current_user.role == 'client'
+        .card
+          %table.white
+            %thead
+              %tr
+                %th{"data-field" => "name"}
+                  Name
+                %th{"data-field" => "description"}
+                  Description
+          - @projects.each do |project|
+            %tbody
+              %tr
+                .row
+                  .col.s4
+                    %td
+                      = project.name
+                  .col.s4
+                    %td
+                      = project.description
+                  .col.s4.right-align
+                    %td
+                      -# = button_to "Add Developer", new_project_developer_path

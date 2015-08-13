@@ -50,7 +50,6 @@ class User < ActiveRecord::Base
     calendar
   end
 
-
   Calendar = Google::Apis::CalendarV3
   def calendar
     calendar = Calendar::CalendarService.new
@@ -59,7 +58,6 @@ class User < ActiveRecord::Base
     calendar.request_options.authorization = oauth_token
     calendar
   end
-
 
   def foobr_calendar
     @id ||= calendar_client.list_calendar_lists.items.detect { |item| item.summary == "foobr" }.id
