@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 
 
   def foobr_calendar
-    @id ||= calendar.list_calendar_lists.items.detect { |item| item.summary == "foobr" }.id
+    @id ||= calendar_client.list_calendar_lists.items.detect { |item| item.summary == "foobr" }.id
     calendar.list_events(@id)
   end
 

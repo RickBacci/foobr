@@ -38,9 +38,7 @@ RSpec.feature "User", type: :feature do
 
       within('#nav') { click_link "Profile" }
 
-      expect(page.status_code).to eql(200)
-      expect(page).to have_content('Profile')
-
+      save_and_open_page
       expect(page).to have_link('Edit')
       expect(page).to_not have_content("Best Company Ever!")
 

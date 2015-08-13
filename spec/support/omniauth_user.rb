@@ -26,7 +26,7 @@ module OmniAuthUser
         "name"             => "Rick Bacci",
         "email"            => "brownieelf175@gmail.com",
         "oauth_token"      => ENV["google_token"],
-        "oauth_expires_at" => 1438814378
+        "oauth_expires_at" => 1439428255
       })
   end
 end
