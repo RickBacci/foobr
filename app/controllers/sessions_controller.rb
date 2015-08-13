@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  if Rails.env != 'development'
+    force_ssl only: [:create]
+  end
 
   def create
     if role
@@ -13,7 +16,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome #{current_user.name}"
       redirect_to root_path
     else
-      flash[:error] = "There was a problem with your login"
+            flash[:error] = "There was a problem with your login"
       redirect_to root_path
     end
   end
