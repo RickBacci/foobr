@@ -10,6 +10,7 @@
             = f.text_field :name
             = f.label :description
             = f.text_area :description
+            = f.hidden_field :client_id, value: current_user.id
 
             .row
               .col.s12
@@ -38,8 +39,12 @@
                                   Start time
                                 %th{"data-field" => "end_time"}
                                   End time
-                                %th{"data-field" => "description"}
-                                  Description
+                                %th{"data-field" => "summary"}
+                                  Title
+                                %th{"data-field" => "status"}
+                                  Status
+                                %th{"data-field" => "hire"}
+                                  Hire
                                 - developer.foobr_calendar.items.each do |event|
                                   %tbody
                                     %tr
@@ -48,10 +53,14 @@
                                       %td
                                         = event.end.date_time.strftime("%m/%d/%Y - %I:%M:%S %P")
                                       %td
-                                        = event.description
+                                        = event.summary
+                                      %td.center-align
+                                        = developer.status(event.transparency)
                                       %td
-                                        %input.filled-in{:id => event.id, :type => "checkbox"}
+                                        = check_box_tag "project[hire][]", event.id, false, id: event.id
                                         %label{ :for => event.id }
+                                        = f.hidden_field :developer_id, value: developer.id
+
 
             = f.submit "Create Project"
 

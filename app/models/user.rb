@@ -59,10 +59,20 @@ class User < ActiveRecord::Base
     calendar
   end
 
+  def calendar_id
+    @id ||= calendar_client.list_calendar_lists.items.detect { |item| item.summary == "foobr" }.id
+  end
+
   def foobr_calendar
     @id ||= calendar_client.list_calendar_lists.items.detect { |item| item.summary == "foobr" }.id
     calendar.list_events(@id)
   end
 
+  def status(status)
+    if status.nil?
+      "busy"
+    else
+      "Available"
+    end
+  end
 end
-
