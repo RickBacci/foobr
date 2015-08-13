@@ -14,10 +14,18 @@ class ProjectsController < ApplicationController
 
     @developer = User.find(project_params[:developer_id])
 
+    @event_ids = project_params[:hire]
+
+    # @event_ids.each do |event_id|
+    #   # @developer.calendar_client
+    #
+    #
+    # end
     @developer.foobr_calendar.items.each do |event|
+      @event_id = project_params[:hire][0]
       event.update!({
         calendar_id: @developer.calendar_id,
-        event_id: project_params[:hire][0],
+        event_id: @event_id,
         transparency: nil
       })
     end
