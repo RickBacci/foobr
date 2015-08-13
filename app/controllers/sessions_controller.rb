@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
-  if Rails.env != 'development'
-    force_ssl only: [:create]
-  end
+
+  force_ssl only: [:create]
 
   def create
     if role

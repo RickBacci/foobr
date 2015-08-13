@@ -26,6 +26,7 @@ gem 'skylight'
 
 gem 'foreman'
 gem 'responders'
+gem 'rack-ssl-enforcer'
 
 gem 'omniauth', '1.2.2'
 gem 'omniauth-google-oauth2'
