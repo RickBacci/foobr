@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'puma'
 gem 'thin'
+gem 'skylight'
 
 gem 'foreman'
 gem 'responders'
