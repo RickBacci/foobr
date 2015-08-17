@@ -26,14 +26,12 @@ gem 'skylight'
 
 gem 'foreman'
 gem 'responders'
-gem 'rack-ssl-enforcer'
+#gem 'rack-ssl-enforcer'
 
-gem 'omniauth', '1.2.2'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'autoprefixer-rails', '~> 5.2.1.1'
 gem 'google-api-client', '0.9.pre3'
-gem 'googleauth'
 
 gem 'rails_12factor', group: :production
 

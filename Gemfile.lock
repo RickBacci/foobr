@@ -179,7 +179,6 @@ GEM
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
       rack (~> 1.4)
-    rack-ssl-enforcer (0.2.9)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.3)
@@ -303,7 +302,6 @@ DEPENDENCIES
   figaro
   foreman
   google-api-client (= 0.9.pre3)
-  googleauth
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
@@ -311,12 +309,10 @@ DEPENDENCIES
   launchy
   materialize-sass
   meta_request
-  omniauth (= 1.2.2)
   omniauth-google-oauth2
   pg (~> 0.18.2)
   pry
   puma
-  rack-ssl-enforcer
   rails (= 4.2.3)
   rails_12factor
   responders
